@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\backend;
 
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryStoreRequest;
 
 class CategoryController extends Controller
 {
@@ -22,15 +24,20 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.category.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        //
+        $category = Category::create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title)
+        ]);
+
+        return redirect()->route('category.index')->with('message','Category info Update successfully');
     }
 
     /**

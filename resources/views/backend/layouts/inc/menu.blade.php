@@ -14,7 +14,7 @@
             </a>
             <ul id="products">
                 <li>
-                    <a href="Products.List.html">
+                    <a href="{{ route('category.index') }}">
                         <span class="label">List</span>
                     </a>
                 </li>

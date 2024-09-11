@@ -16,6 +16,8 @@
 
 @section('admin_content')
     <div class="row">
+        <h5 class="text-center text-success">{{ session('message') }}</h5>
+
         <h1>Category List Table</h1>
         <div class="col-12">
             <div class="d-flex justify-content-end">
@@ -42,8 +44,7 @@
                         @foreach ($categories as $category)
                             <tr>
                                 <th scope="row">{{ $categories->firstItem() + $loop->index }}</th>
-                                <td><img src="{{ asset('uploads/category') }}/{{ $category->category_image }}"
-                                        alt="" class="img-fluid rounded h-50 w-50"></td>
+                                <td><img src="" alt="" class="img-fluid rounded h-50 w-50"></td>
                                 <td>{{ $category->updated_at->format('d M Y') }}</td>
                                 <td>{{ $category->title }}</td>
                                 <td>{{ $category->slug }}</td>
