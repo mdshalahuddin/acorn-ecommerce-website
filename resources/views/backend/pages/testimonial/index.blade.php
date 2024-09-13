@@ -19,7 +19,7 @@
         <h1>Testimonial List Table</h1>
         <div class="col-12">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('testimonial.create') }}" class="btn btn-primary">
+                <a href="{{ route('testimonial.create') }}" class="btn btn-primary" height="50" width="80">
                     <i class="fas fa-plus-circle"></i>
                     Add New Testimonial
                 </a>
@@ -44,8 +44,8 @@
                                 <th scope="row">{{ $testimonials->firstItem() + $loop->index }}</th>
                                 <td>{{ $testimonial->updated_at->format('d M Y') }}</td>
                                 <td>
-                                    <img src="{{ asset('uploads/testimonials') }}/{{ $testimonial->client_image }}"
-                                        alt="" class="img-fluid rounded-circle">
+                                    <img src="{{ asset($testimonial->client_image) }}" alt="image"
+                                        class="img-fluid rounded-circle" height="100" width="120">
                                 </td>
                                 <td>{{ $testimonial->client_name }}</td>
                                 <td>{{ $testimonial->client_designation }}</td>
