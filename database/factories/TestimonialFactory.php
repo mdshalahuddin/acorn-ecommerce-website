@@ -23,6 +23,7 @@ class TestimonialFactory extends Factory
             'client_name' => $name,
             'client_name_slug' => Str::slug($name),
             'client_designation' => $this->faker->jobTitle.','.' '.$this->faker->company,
+            'client_image' => $this->faker->imageUrl(640,480),
             'client_message' => $this->faker->paragraph(),
         ];
     }
