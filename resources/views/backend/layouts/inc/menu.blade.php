@@ -19,18 +19,18 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Products.Detail.html">
+                    <a href="{{ route('category.create') }}">
                         <span class="label">Add Category</span>
                     </a>
                 </li>
             </ul>
         </li>
         <li>
-            <a href="#products" data-href="Products.html">
+            <a href="#testomonials" data-href="Products.html">
                 <i data-cs-icon="cupcake" class="icon" data-cs-size="18"></i>
-                <span class="label">Testimonial</span>
+                <span class="label">Testimonials</span>
             </a>
-            <ul id="products">
+            <ul id="testomonials">
                 <li>
                     <a href="{{ route('testimonial.index') }}">
                         <span class="label">List</span>
@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Products.Detail.html">
+                    <a href="">
                         <span class="label">Detail</span>
                     </a>
                 </li>
