@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\backend;
 
+use Nette\Utils\Image;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest('id')->select(['id', 'title', 'slug','updated_at'])->paginate();
+        $categories = Category::latest('id')->select(['id', 'title', 'slug', 'category_image','updated_at'])->paginate();
         // return $categories;
         return view('backend.pages.category.index', compact('categories'));    }
 
@@ -32,12 +33,19 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(CategoryStoreRequest $request)
-    {
-        $category = Category::create([
-            'title' => $request->title,
-            'slug' => Str::slug($request->title)
-        ]);
+    {$category = Category::create([
+        'title' => $request->title,
+        'slug' => Str::slug($request->title)
+    ]);
 
+    $imageName =  time().'.'.$request->category_image->extension();
+    $request->category_image->move(public_path('uploads/category'),$imageName);
+    // Add new post
+        $category->title = $request->title;
+        $category->category_image = $imageName;
+        $category->save();
+
+    return redirect()->route('category.index');
         return redirect()->route('category.index')->with('message','Category info Update successfully');
     }
 
@@ -82,5 +90,7 @@ class CategoryController extends Controller
         $category->delete();
 
         return redirect()->route('category.index')->with('message','Category info
-        delete successfully');    }
+        delete successfully');
+     }
+
 }

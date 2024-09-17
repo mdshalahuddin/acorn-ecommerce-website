@@ -23,6 +23,7 @@ class CategoryFactory extends Factory
         return [
             'title' => $title,
             'slug' => $slug,
+            'client_image' => $this->faker->imageUrl(640,480),
         ];
 
     }
